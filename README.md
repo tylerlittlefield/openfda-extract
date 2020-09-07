@@ -18,9 +18,8 @@ single [script](/data-raw/loop.R) attempts to:
 The data is relational as described
 [here](https://opendata.stackexchange.com/a/2187). Converting the data
 to tabular format may not be efficient and causes lots of duplication.
-If you want to run this, you need to have a database ready, some storage
-space, and patience. I have split the nested data into separate tables,
-in total:
+To avoid duplication, I have tried to store nested data in different
+tables:
 
 1.  `adverse_events`
 2.  `adverse_events.mdr_text`
