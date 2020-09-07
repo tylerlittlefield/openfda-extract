@@ -81,18 +81,18 @@ millions of observations that you can explore.
       select(id, text)
     #> # Source:   lazy query [?? x 2]
     #> # Database: postgres [tyler@localhost:/openfda]
-    #>    id               text                                                        
-    #>    <chr>            <chr>                                                       
-    #>  1 1996q1-0001-000… "PT WITH HISTORY OF PELVIC PAIN. LAPAROSCOPIC ASSISTED VAGI…
-    #>  2 1996q1-0001-000… "ON TUESDAY, 12/26, RPTR WENT TO THE PT'S HOME AND THE RPTR…
-    #>  3 1996q1-0001-000… "FACILITY ALLEGES PT REACTION DURING DIALYSIS. CHIEF TECH R…
-    #>  4 1996q1-0001-000… "PT SUFFERED A SUPRACONDYLAR FRACTURE OF THE RIGHT FEMUR WI…
-    #>  5 1996q1-0001-000… "PLASTIC SPIKE ATTACHED TO DRIP CHAMBER APPEARS TO HAVE A B…
-    #>  6 1996q1-0001-000… "DENTAL IMPLANT FAILED IN FUNCTION."                        
-    #>  7 1996q1-0001-000… "WHILE PREPARING FOR A CRYOSURGICAL PROCEDURE THE STAFF DET…
-    #>  8 1996q1-0001-000… "PICC LINE INSERTED. A SMALL \"PIN\" HOLE WAS NOTED AT THE …
-    #>  9 1996q1-0001-000… "DURING USE, RECIPROCATING SAW LEAKED BLACK FLUID INTO PT'S…
-    #> 10 1996q1-0001-000… "PT COMPLAINED OF PAIN. IT WAS FOUND THAT THE PLASTIC HAD S…
+    #>    id                 text                                                      
+    #>    <chr>              <chr>                                                     
+    #>  1 2019q4-0004-0004-… IT WAS REPORTED THAT A LOW TRANSMITTER BATTERY ALERT OCCU…
+    #>  2 2019q4-0004-0004-… (B)(4).                                                   
+    #>  3 2019q4-0004-0004-… IT WAS REPORTED THAT A LOW TRANSMITTER BATTERY ALERT OCCU…
+    #>  4 2019q4-0004-0004-… (B)(4). CURRENTLY IT IS UNKNOWN WHETHER OR NOT THE DEVICE…
+    #>  5 2019q4-0004-0004-… THE CUSTOMER REPORTED VIA PHONE CALL THAT RETAINER RING C…
+    #>  6 2019q4-0004-0004-… THE INSULIN PUMP WAS RECEIVED WITH MISSING RETAINER AND M…
+    #>  7 2019q4-0004-0004-… (B)(4). CURRENTLY IT IS UNKNOWN WHETHER OR NOT THE DEVICE…
+    #>  8 2019q4-0004-0004-… CUSTOMER REPORTED VIA PHONE CALL THAT THE INSULIN PUMP HA…
+    #>  9 2019q4-0004-0004-… THE INSULIN PUMP WAS RECEIVED WITH A CRITICAL PUMP ERROR …
+    #> 10 2019q4-0004-0004-… (B)(4).                                                   
     #> # … with more rows
 
     # query the device information
@@ -100,18 +100,18 @@ millions of observations that you can explore.
       select(id, manufacturer_d_name)
     #> # Source:   lazy query [?? x 2]
     #> # Database: postgres [tyler@localhost:/openfda]
-    #>    id                  manufacturer_d_name                   
-    #>    <chr>               <chr>                                 
-    #>  1 1996q1-0001-0001-1  ETHICON, INC.                         
-    #>  2 1996q1-0001-0001-2  SIMS DELTEC, INC.                     
-    #>  3 1996q1-0001-0001-3  TERUMO MEDICAL CORP.                  
-    #>  4 1996q1-0001-0001-4  SMITH & NEPHEW RICHARDS, INC.         
-    #>  5 1996q1-0001-0001-5  CURRIE MEDICAL SPECIALTIES            
-    #>  6 1996q1-0001-0001-6  CORE-VENT BIO-ENGINEERING             
-    #>  7 1996q1-0001-0001-7  CRYOGENIC TECHNOLOGIES, LTD.          
-    #>  8 1996q1-0001-0001-8  GESCO INTERNATIONAL, INC.             
-    #>  9 1996q1-0001-0001-9  STRYKER INSTRUMENTS DIV. STRYKER CORP.
-    #> 10 1996q1-0001-0001-10 ZIMMER,INC.                           
+    #>    id                     manufacturer_d_name                 
+    #>    <chr>                  <chr>                               
+    #>  1 2019q4-0004-0004-72690 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  2 2019q4-0004-0004-72691 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  3 2019q4-0004-0004-72692 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  4 2019q4-0004-0004-72693 MEDTRONIC, INC.                     
+    #>  5 2019q4-0004-0004-72694 ALLERGAN (COSTA RICA)               
+    #>  6 2019q4-0004-0004-72695 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  7 2019q4-0004-0004-72696 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  8 2019q4-0004-0004-72697 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #>  9 2019q4-0004-0004-72698 MEDTRONIC PUERTO RICO OPERATIONS CO.
+    #> 10 2019q4-0004-0004-72699 MEDTRONIC PUERTO RICO OPERATIONS CO.
     #> # … with more rows
 
     # disconnect
@@ -123,5 +123,5 @@ Note that there is an `id` column in every table, for example:
 -   `<year quarter>-<part n>-<n parts>-<row number>`
 
 I made this column so that tables can be joined (though this ID in some
-other form might already be available in the data, I just haven’t
-figured it out). already)
+other form might already exist in the data, I just haven’t figured out
+if that is the case or not).

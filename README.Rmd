@@ -90,4 +90,4 @@ Note that there is an `id` column in every table, for example:
 * `2014q4-0002-0003-3683`
 * `<year quarter>-<part n>-<n parts>-<row number>`
 
-I made this column so that tables can be joined (though this ID in some other form might already be available in the data, I just haven't figured it out). already)
+I made this column so that tables can be joined (though this ID in some other form might already exist in the data, I just haven't figured out if that is the case or not).
