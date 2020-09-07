@@ -75,11 +75,13 @@ dbListTables(con)
 
 # query the mdr text
 tbl(con, "adverse_events.mdr_text") %>% 
-  select(id, text)
+  select(text) %>% 
+  head(1)
 
 # query the device information
 tbl(con, "adverse_events.device") %>% 
-  select(id, manufacturer_d_name)
+  filter(manufacturer_d_name == "ETHICON, INC.") %>% 
+  glimpse()
 
 # disconnect
 dbDisconnect(con)
