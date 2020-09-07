@@ -39,8 +39,8 @@ Where the naming convention is `mainframe.<list col>`.
 1. I transformed the data on:
     * 2013 15" MacBook Pro, 8 GB Memory, 8 Core CPU.
 2. I wrote the data to:
-    * Postgres database hosted on a digital ocean droplet
-    * 2 GB Memory, 2 vCPUs, 60 GB Disk, Ubuntu 18.04.3 (LTS) x64
+    * Postgres database hosted on a digital ocean droplet.
+    * 2 GB Memory, 2 vCPUs, 60 GB Disk, Ubuntu 18.04.3 (LTS) x64.
     
 For context, this was the result of my first run:
 
