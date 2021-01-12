@@ -109,16 +109,16 @@ prepare_device <- function(.data) {
   }
 }
 
-drop_all_tables <- function(con) {
-  if ("adverse_events" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events"))
-  if ("adverse_events.patient" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_patient"))
-  if ("adverse_events.remedial_action" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_remedial_action"))
-  if ("adverse_events.mdr_text" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_mdr_text"))
-  if ("adverse_events.type_of_report" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_type_of_report"))
-  if ("adverse_events.product_problems" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_product_problems"))
-  if ("adverse_events.source_type" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_source_type"))
-  if ("adverse_events.device" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_device"))
-}
+# drop_all_tables <- function(con) {
+#   if ("adverse_events" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events"))
+#   if ("adverse_events.patient" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_patient"))
+#   if ("adverse_events.remedial_action" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_remedial_action"))
+#   if ("adverse_events.mdr_text" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_mdr_text"))
+#   if ("adverse_events.type_of_report" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_type_of_report"))
+#   if ("adverse_events.product_problems" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_product_problems"))
+#   if ("adverse_events.source_type" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_source_type"))
+#   if ("adverse_events.device" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_device"))
+# }
 
 write_table <- function(con, .data, name) {
   dbWriteTable(con, name, .data, temporary = FALSE, overwrite = TRUE)
