@@ -98,8 +98,8 @@ prepare_device <- function(.data) {
     select(id, device) %>% 
     mutate_if(is.list, function(col) map_if(col, rlang::is_empty, ~ "")) %>% 
     unnest(device) %>% 
-    mutate_if(is.list, function(col) map_if(col, is.null, ~ "")) %>% 
-    unnest(openfda.fei_number)
+    mutate_if(is.list, function(col) map_if(col, is.null, ~ ""))
+    # unnest(openfda.fei_number)
     # unnest(openfda.registration_number)
   
   if ("device" %in% names(x)) {
@@ -110,22 +110,18 @@ prepare_device <- function(.data) {
 }
 
 drop_all_tables <- function(con) {
-  if ("adverse_events" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events")
-  if ("adverse_events.patient" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.patient")
-  if ("adverse_events.remedial_action" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.remedial_action")
-  if ("adverse_events.mdr_text" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.mdr_text")
-  if ("adverse_events.type_of_report" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.type_of_report")
-  if ("adverse_events.product_problems" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.product_problems")
-  if ("adverse_events.source_type" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.source_type")
-  if ("adverse_events.device" %in% dbListTables(con)) dbRemoveTable(con, "adverse_events.device")
+  if ("adverse_events" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events"))
+  if ("adverse_events.patient" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_patient"))
+  if ("adverse_events.remedial_action" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_remedial_action"))
+  if ("adverse_events.mdr_text" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_mdr_text"))
+  if ("adverse_events.type_of_report" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_type_of_report"))
+  if ("adverse_events.product_problems" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_product_problems"))
+  if ("adverse_events.source_type" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_source_type"))
+  if ("adverse_events.device" %in% dbListTables(con)) dplyr::db_drop_table(con, dbplyr::in_schema("device", "adverse_events_device"))
 }
 
 write_table <- function(con, .data, name) {
-  if (name %in% dbListTables(con)) {
-    dbWriteTable(con, name, .data, append = TRUE)
-  } else {
-    dbWriteTable(con, name, .data, temporary = FALSE)
-  }
+  dbWriteTable(con, name, .data, temporary = FALSE, overwrite = TRUE)
 }
 
 refresh_db <- function(links) {
@@ -151,14 +147,14 @@ refresh_db <- function(links) {
       adverse_events.device <- prepare_device(raw)
       
       # write
-      write_table(con, adverse_events, "adverse_events")
-      write_table(con, adverse_events.patient, "adverse_events.patient")
-      write_table(con, adverse_events.remedial_action, "adverse_events.remedial_action")
-      write_table(con, adverse_events.mdr_text, "adverse_events.mdr_text")
-      write_table(con, adverse_events.type_of_report, "adverse_events.type_of_report")
-      write_table(con, adverse_events.product_problems, "adverse_events.product_problems")
-      write_table(con, adverse_events.source_type, "adverse_events.source_type")
-      write_table(con, adverse_events.device, "adverse_events.device")
+      write_table(con, adverse_events, dbplyr::in_schema("device", "adverse_events")) 
+      write_table(con, adverse_events.patient, dbplyr::in_schema("device", "adverse_events_patient"))
+      write_table(con, adverse_events.remedial_action, dbplyr::in_schema("device", "adverse_events_remedial_action"))
+      write_table(con, adverse_events.mdr_text, dbplyr::in_schema("device", "adverse_events_mdr_text"))
+      write_table(con, adverse_events.type_of_report, dbplyr::in_schema("device", "adverse_events_type_of_report"))
+      write_table(con, adverse_events.product_problems, dbplyr::in_schema("device", "adverse_events_product_problems"))
+      write_table(con, adverse_events.source_type, dbplyr::in_schema("device", "adverse_events_source_type"))
+      write_table(con, adverse_events.device, dbplyr::in_schema("device", "adverse_events_device"))
     }, error = function(e) {
       message("! ", e)
     })
