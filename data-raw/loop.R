@@ -28,4 +28,4 @@ source("R/utils.R")
 openfda_device_links <- fetch_adverse_event_links()
 
 # refresh the database
-refresh_db(openfda_device_links[18:175])
+refresh_db(openfda_device_links[19:175])

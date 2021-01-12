@@ -98,9 +98,9 @@ prepare_device <- function(.data) {
     select(id, device) %>% 
     mutate_if(is.list, function(col) map_if(col, rlang::is_empty, ~ "")) %>% 
     unnest(device) %>% 
-    mutate_if(is.list, function(col) map_if(col, is.null, ~ ""))
-    # unnest(openfda.fei_number)
-    # unnest(openfda.registration_number)
+    mutate_if(is.list, function(col) map_if(col, is.null, ~ "")) %>% 
+    unnest(openfda.fei_number) %>% 
+    unnest(openfda.registration_number)
   
   if ("device" %in% names(x)) {
     x

@@ -28,7 +28,7 @@ source("R/utils.R")
 openfda_device_links <- fetch_adverse_event_links()
 
 # get config
-config <- config_adverse_events(openfda_device_links[18])
+config <- config_adverse_events(openfda_device_links[19])
 
 # download data
 data <- download_adverse_events(config)
