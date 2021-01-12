@@ -82,8 +82,9 @@ prepare_type_of_report <- function(.data) {
 
 prepare_product_problems <- function(.data) {
   .data %>% 
-    select(id, product_problems) %>% 
-    unnest(product_problems)
+    select(id, product_problem_flag)
+    # select(id, product_problems) %>% 
+    # unnest(product_problems)
 }
 
 prepare_source_type <- function(.data) {
@@ -98,8 +99,8 @@ prepare_device <- function(.data) {
     mutate_if(is.list, function(col) map_if(col, rlang::is_empty, ~ "")) %>% 
     unnest(device) %>% 
     mutate_if(is.list, function(col) map_if(col, is.null, ~ "")) %>% 
-    unnest(openfda.fei_number) %>% 
-    unnest(openfda.registration_number)
+    unnest(openfda.fei_number)
+    # unnest(openfda.registration_number)
   
   if ("device" %in% names(x)) {
     x
