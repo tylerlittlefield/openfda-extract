@@ -147,14 +147,14 @@ refresh_db <- function(links) {
       adverse_events.device <- prepare_device(raw)
       
       # write
-      write_table(con, adverse_events, dbplyr::in_schema("device", "adverse_events")) 
-      write_table(con, adverse_events.patient, dbplyr::in_schema("device", "adverse_events_patient"))
-      write_table(con, adverse_events.remedial_action, dbplyr::in_schema("device", "adverse_events_remedial_action"))
-      write_table(con, adverse_events.mdr_text, dbplyr::in_schema("device", "adverse_events_mdr_text"))
-      write_table(con, adverse_events.type_of_report, dbplyr::in_schema("device", "adverse_events_type_of_report"))
-      write_table(con, adverse_events.product_problems, dbplyr::in_schema("device", "adverse_events_product_problems"))
-      write_table(con, adverse_events.source_type, dbplyr::in_schema("device", "adverse_events_source_type"))
-      write_table(con, adverse_events.device, dbplyr::in_schema("device", "adverse_events_device"))
+      write_table(con, adverse_events, "device.adverse_events")
+      write_table(con, adverse_events.patient, "device.adverse_events_patient")
+      write_table(con, adverse_events.remedial_action, "device.adverse_events_remedial_action")
+      write_table(con, adverse_events.mdr_text, "device.adverse_events_mdr_text")
+      write_table(con, adverse_events.type_of_report, "device.adverse_events_type_of_report")
+      write_table(con, adverse_events.product_problems, "device.adverse_events_product_problems")
+      write_table(con, adverse_events.source_type, "device.adverse_events_source_type")
+      write_table(con, adverse_events.device, "device.adverse_events_device")
     }, error = function(e) {
       message("! ", e)
     })
