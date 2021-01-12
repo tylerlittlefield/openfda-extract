@@ -121,7 +121,11 @@ prepare_device <- function(.data) {
 # }
 
 write_table <- function(con, .data, name) {
-  dbWriteTable(con, name, .data, temporary = FALSE, overwrite = TRUE)
+  if (name %in% dbListTables(con)) {
+    dbWriteTable(con, name, .data, append = TRUE)
+  } else {
+    dbWriteTable(con, name, .data, temporary = FALSE)
+  }
 }
 
 refresh_db <- function(links) {
