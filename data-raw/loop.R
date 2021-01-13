@@ -22,7 +22,7 @@ con <- DBI::dbConnect(
 source("R/utils.R")
 
 # drop all tables before rewriting new tables # <--- Uncomment the line below, commented out to avoid deleting all tables by accident
-# drop_all_tables(con)
+drop_all_tables(con)
 
 # fetch links json file
 openfda_device_links <- fetch_adverse_event_links()
