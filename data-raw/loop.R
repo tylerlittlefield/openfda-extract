@@ -3,6 +3,9 @@ library(dplyr, warn.conflicts = FALSE)
 library(tidyr)
 library(purrr, warn.conflicts = FALSE)
 library(DBI)
+library(future)
+
+plan(multicore)
 
 # credentials
 dw <- config::get("datawarehouse")
