@@ -1,5 +1,5 @@
 library(jsonlite)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(tidyr)
 library(purrr)
 library(DBI)
