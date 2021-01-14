@@ -132,7 +132,7 @@ write_table <- function(con, .data, name) {
 refresh_db <- function(links) {
   start <- Sys.time()
   cli::cli_rule(paste0("openFDA database refresh [", Sys.time(), "]"))
-  invisible({future_lapply(links, function(x) {
+  invisible({lapply(links, function(x) {
     tryCatch({
       message("* Running [", x, "]")
       
