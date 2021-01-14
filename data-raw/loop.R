@@ -1,7 +1,7 @@
 library(jsonlite)
 library(dplyr, warn.conflicts = FALSE)
 library(tidyr)
-library(purrr)
+library(purrr, warn.conflicts = FALSE)
 library(DBI)
 
 # credentials
