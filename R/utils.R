@@ -121,7 +121,8 @@ drop_all_tables <- function(con) {
 }
 
 write_table <- function(con, .data, name) {
-  if (name %in% dbListTables(con)) {
+  tbl_name <- gsub("device\\.", "", name)
+  if (tbl_name %in% dbListTables(con)) {
     dbWriteTable(con, SQL(name), .data, append = TRUE)
   } else {
     dbWriteTable(con, SQL(name), .data, temporary = FALSE)
@@ -131,7 +132,7 @@ write_table <- function(con, .data, name) {
 refresh_db <- function(links) {
   start <- Sys.time()
   cli::cli_rule(paste0("openFDA database refresh [", Sys.time(), "]"))
-  invisible({lapply(links, function(x) {
+  invisible({future_lapply(links, function(x) {
     tryCatch({
       message("* Running [", x, "]")
       
