@@ -131,7 +131,7 @@ write_table <- function(con, .data, name) {
 
 refresh_db <- function(links) {
   start <- Sys.time()
-  cli::cli_rule(paste0("openFDA database refresh [", Sys.time(), "]"))
+  cli::cli_rule(paste0("openFDA database extract [", Sys.time(), "]"))
   invisible({lapply(links, function(x) {
     tryCatch({
       message("* Running [", x, "]")
@@ -166,5 +166,5 @@ refresh_db <- function(links) {
   })})
   end <- Sys.time()
   elapsed <- end - start
-  message("~ openFDA database refresh completed in [", elapsed, " ", attr(elapsed, "units"), "]")
+  message("~ openFDA database extract completed in [", elapsed, " ", attr(elapsed, "units"), "]")
 }
